@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from '../state.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-// import { travelEmailValidator } from '..travel-email.validator';
+import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-reactiveform',
@@ -9,7 +9,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./reactive.component.css']
 })
 export class ReactiveformComponent implements OnInit {
-
+ 
 
   constructor() { }
     title:string = "REACTIVE FORM"
@@ -60,5 +60,24 @@ export class ReactiveformComponent implements OnInit {
   }
   removeEmail(i: number){
     return ((this.formData.get('Email')) as FormArray).removeAt(i)
+  }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FakeLoginService {
+  private isLoggedIn = false;
+
+  login() {
+    this.isLoggedIn = true;
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+  }
+
+  LoggedIn(): boolean {
+    return this.isLoggedIn;
   }
 }
