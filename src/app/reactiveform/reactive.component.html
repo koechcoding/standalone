@@ -1,0 +1,23 @@
+{{title}}
+
+<div>
+    <form #myForm="" (ngSubmit)="onSubmit()">
+        <div>
+          <label>Name:</label>
+          <input type="text" name="name" [(ngModel)]="formData.Name" required>
+          <div *ngIf="myForm.submitted && myForm.controls.name.invalid">Name is required</div>
+        </div>
+        <div>
+          <label>Email:</label>
+          <input type="email" name="email" [(ngModel)]="formData.Email" required email>
+          <div *ngIf="myForm.submitted && myForm.controls.email.invalid">Invalid email format</div>
+        </div>
+        <div>
+          <label>Destination:</label>
+          <input type="text" name="destination" [(ngModel)]="formData.Destination" required>
+          <div *ngIf="myForm.submitted && myForm.controls.destination.invalid?.travelEmail">Destination is required</div>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      
+</div>
